@@ -1,0 +1,14 @@
+.setPlayers {
+  margin: 0 auto;
+  margin: 2%;
+}
+.form-control {
+  display: inline;
+}
+.hole {
+  background: #000;
+  color: #ccc;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 6px;
+}

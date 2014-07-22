@@ -1,0 +1,20 @@
+{
+  "name": "sandbox",
+  "version": "0.0.1",
+  "description": "sandbox for messing around with Backbone",
+  "author": {
+    "name": "Foad Mozaffari",
+    "email": "foad.mozaffari@gmail.com"
+  },
+  "repository" : {
+      "type" : "git",
+      "url" : "https://github.com/Foadm/sandbox"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "1.20.1",
+    "servedir": "0.2.2",
+    "casperjs": "1.1.0-beta3"
+  }
+}
