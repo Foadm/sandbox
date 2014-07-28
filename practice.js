@@ -1,4 +1,9 @@
 var Player = Backbone.Model.extend({
+    defaults : {
+        name : "",
+        score : 0,
+        total : 0
+    },
 
     validate : function(attrs){
         if ( ! attrs.name ){
@@ -25,17 +30,22 @@ initialize : function(){
 });
 
 var PlayersView = Backbone.View.extend({
-
+        render : function(){
+            var last_model = this.collection.last();
+            var playerView = new PlayerView({ model : last_model });
+    }
 });
 // add players to the game
 $( document ).ready(function() {
     var playerCollection = new PlayerCollection;
+    var playersView = new PlayersView({ collection : playerCollection});
     $( "#enterPlayer" ).submit(function(e) {
         var player = new Player();
         var playerName = $('#playerField').val();
         player.set({name : playerName , score : 0, total : 0});
         playerCollection.add(player);
-        var playerView = new PlayerView({ model : player });
+        //calls playersView (collection)
+        playersView.render();
         e.preventDefault();
     });
     $( "#start" ).submit(function(e) {
