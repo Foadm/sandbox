@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
 <div class="setPlayers">
     <div class="intro">
         <form id="enterPlayer">
@@ -41,11 +42,11 @@
             </tr>
             </tfoot>
             <tbody class="initial_players">
-            <script id="player-template" type="text/x-handlebars-template">
+            <script id="player-template" type="text/template">
             <tr>
-                <td class="player_name">{{name}}</td>
-                <td class="player_score">{{score}}</td>
-                <td class="player_total">{{score}}</td>
+                <td class="player_name"><%= name %></td>
+                <td class="player_score"><%= score %></td>
+                <td class="player_total"><%= total %></td>
              </tr>
             </script>
             </tbody>
@@ -60,7 +61,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Name</th>
+                <th class="name">Name</th>
                 <th>Total Score</th>
                 <th>New Round Score</th>
             </tr>
@@ -94,6 +95,9 @@
         </table>
         </div>
 </div>
+<script id="playerTemplate" type="text/template">
+    <%= name %>
+</script>
 </body>
 
 </html>
