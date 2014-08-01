@@ -28,26 +28,30 @@
                 <th>Name</th>
                 <th>Score</th>
                 <th>Total</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tfoot>
             <tr>
-                <th>
+                <td>
                     <form id="start">
                         <input type="submit" id="start-button" class="btn btn-primary" value="Start"/>
                     </form>
-                </th>
-                <th></th>
-                <th></th>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             </tfoot>
             <tbody class="initial_players">
             <script id="player-template" type="text/template">
-            <tr>
-                <td class="player_name"><%= name %></td>
+                <td class="player_name"><span><%= name %></span><input class="form-control edit-input name-input" style="display:none" placeholder="Enter Name" name="playerName"/><button style="display:none" class="btn btn-info edit change-input">Change</button></td>
                 <td class="player_score"><%= score %></td>
                 <td class="player_total"><%= total %></td>
-             </tr>
+                <td><button class="btn btn-info edit">Edit</button></td>
+                <td><button class="btn btn-danger delete">Delete</button></td>
             </script>
             </tbody>
         </table>

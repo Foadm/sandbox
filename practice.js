@@ -16,21 +16,41 @@ var PlayerCollection = Backbone.Collection.extend({
 });
 
 var PlayerView = Backbone.View.extend({
-    tagName : 'div',
-    className : 'player_cell',
+    tagName : 'tr',
+    events :  {
+      'click button.edit' : 'editPlayer',
+      'click button.change-input' : 'changeName',
+      'click button.delete' : 'destroy'
+    },
+    editPlayer : function(){
+        this.$('span').hide();
+        this.$( ".name-input").show();
+        this.$( ".change-input").show();
+        this.$( ".name-input").attr("placeholder",this.model.get("name"));
+    },
+    changeName : function(){
+        var newName = this.$(".name-input").val();
+        if ( !newName) return;
+        //expand this later and add an error message
+        this.model.set('name', newName);
+    },
+    destroy : function(){
 
-initialize : function(){
-    this.template = _.template( $('#player-template').html() );
-    this.render();
+    },
+
+    initialize : function(){
+        this.template = _.template( $('#player-template').html() );
+        this.render();
+        this.model.on('change', this.render, this);
     },
     render : function(){
         this.$el.html(this.template( this.model.toJSON() ));
-        $('.initial_players').append(this.$el.html());
+        $('.initial_players').append(this.$el);
     }
 });
 
 var PlayersView = Backbone.View.extend({
-        render : function(){
+    render : function(){
             var last_model = this.collection.last();
             var playerView = new PlayerView({ model : last_model });
     }

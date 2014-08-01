@@ -12,3 +12,7 @@
   font-size: 1.5em;
   padding: 6px;
 }
+.name-input {
+  width: 60%;
+  margin-right: 6px;
+}
