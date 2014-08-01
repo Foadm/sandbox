@@ -35,17 +35,21 @@ var PlayerView = Backbone.View.extend({
         this.model.set('name', newName);
     },
     destroy : function(){
-
+        this.model.destroy();
     },
 
     initialize : function(){
         this.template = _.template( $('#player-template').html() );
         this.render();
         this.model.on('change', this.render, this);
+        this.model.on('destroy', this.remove, this);
     },
     render : function(){
         this.$el.html(this.template( this.model.toJSON() ));
         $('.initial_players').append(this.$el);
+    },
+    remove : function(){
+        this.$el.remove();
     }
 });
 
