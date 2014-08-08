@@ -59,6 +59,44 @@ var PlayersView = Backbone.View.extend({
             var playerView = new PlayerView({ model : last_model });
     }
 });
+var ScoringTemplate = Backbone.View.extend({
+    tagName : 'td',
+    initialize : function(){
+        debugger;
+        this.template = _.template( $('#scoringSubmit').html());
+        this.render();
+    },
+    events : {
+        'click #input-button' : 'addScore'
+    },
+    addScore : function(){
+        console.log('clicked');
+    },
+    render : function(){
+        $('footerSubmit').append(this.$el);
+    }
+});
+var ScoringView = Backbone.View.extend({
+    tagName : 'tr',
+    addScore : function(){
+        console.log('called');
+        this.collection.each(function(player){
+            console.log('called annon');
+            console.log(player.get('score'));
+        },this);
+    },
+    initialize : function(){
+        this.template = _.template( $('#scoring-template').html());
+        this.render();
+    },
+    render : function(){
+        this.collection.each(function(player){
+            this.$el.html(this.template( player.toJSON() ));
+            $('.scoring-body').append(this.$el);
+        }, this);
+    }
+});
+
 // add players to the game
 $( document ).ready(function() {
     var playerCollection = new PlayerCollection;
@@ -72,8 +110,12 @@ $( document ).ready(function() {
         playersView.render();
         e.preventDefault();
     });
+
     $( "#start" ).submit(function(e) {
-        playerController.initializeScoring();
+        $('.intro').hide();
+        $('#template-wrapper').show();
+        var scoringView = new ScoringView({ collection : playerCollection});
+        var scoringTemplate = new ScoringTemplate({ collection : playerCollection});
         e.preventDefault();
     });
 });

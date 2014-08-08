@@ -58,50 +58,43 @@
 
     </div>
 
-        <div id="template-wrapper" style="display:none;">
-            <script id="currentHole" type="text/x-handlebars-template">
-            <div class="row hole">Hole #{{currentHole}}</div>
-            </script>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th class="name">Name</th>
-                <th>Total Score</th>
-                <th>New Round Score</th>
-            </tr>
-            </thead>
-            <tfoot>
-            <tr>
-                <td>
+    <div id="template-wrapper" style="display:none;">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="name">Name</th>
+                    <th>Total Score</th>
+                    <th>New Round Score</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr class = 'footerSubmit'>
+                    <script id='#scoringSubmit' type="text/template">
                     <form id="scoreSubmit">
-                        <input type="submit" id="input-button" class="btn btn-primary" value="Submit" />
+                        <input type="submit" class="btn btn-primary input-button" value="Submit" />
                     </form>
-                </td>
-                <td></td>
-                <td></td>
-            </tr>
-            </tfoot>
-            <tbody class="scoring-body">
-            <script id="scoring-template" type="text/x-handlebars-template">
-            <tr class="scoring-view">
-                <td class="scoring_name">{{name}}</td>
-                <td class="scoring_score">{{score}}</td>
-                <td class="score-field">
-                    <form class="scoreInput">
-                        <label class="sr-only">Player Score</label>
-                        <input class="form-control score-input" style="width:30%" placeholder="Enter Score" name="playerScore"/>
-                    </form>
-                </td>
-            </tr>
-            </script>
-            </tbody>
+                    </script>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tfoot>
+                <tbody class="scoring-body">
+                <script id="scoring-template" type="text/template">
+                    <td class="scoring_name"><%= name %></td>
+                    <td class="scoring_score"><%= total %></td>
+                    <td class="score-field">
+                        <form class="scoreInput">
+                            <label class="sr-only">Player Score</label>
+                            <input class="form-control score-input" style="width:30%" placeholder="Enter Score" name="playerScore"/>
+                        </form>
+                    </td>
+                </script>
+                </tbody>
+            </table>
 
-        </table>
-        </div>
+    </div>
 </div>
-<script id="playerTemplate" type="text/template">
-    <%= name %>
-</script>
+
 </body>
 
 </html>
